@@ -1,0 +1,29 @@
+<h1>{{cube.name}}</h1>
+<img class="cube" src={{cube.imageUrl}}>
+<div class="details">
+  <p><span>Description:</span> {{cube.description}}</p>
+  <p><span>Difficulty level:</span>{{cube.difficulty}}</p>
+  <a class="btn" href="/">Back</a>
+  <a class="btn" href="/details/{{cube._id}}/edit">Edit</a>
+  <a class="btn" href="javascript:void(0)" id={{cube._id}}>Delete</a>
+</div>
+<div class="comments">
+  {{#each cube.comments}}
+  <div class="each-comment">
+    <p>Name: {{name}}</p>
+    <p>Comment: {{description}}</p>
+  </div>
+  {{/each}}
+</div>
+<div class="form-comments">
+  <form action='/details/{{cube._id}}' method="POST">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name">
+    <label for="name">Description</label>
+    <textarea id="name" name="description"></textarea>
+    {{#if error}}
+    <p>{{error}}</p>
+    {{/if}}
+    <input type="submit" value="Create">
+  </form>
+</div>
